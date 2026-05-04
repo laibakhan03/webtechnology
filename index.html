@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>Student Task Manager</h1>
+</header>
+
+<main>
+  <aside>
+    <section>
+      <h2>Add Task</h2>
+      <form id="task-form">
+        <label for="task-name">Task Name</label>
+        <input type="text" id="task-name" placeholder="e.g. Assignment 1" required />
+
+        <label for="subject">Subject</label>
+        <select id="subject" required>
+          <option value="">— Select Subject —</option>
+          <option value="Web Technologies">Web Technologies</option>
+          <option value="Data Structures">Data Structures</option>
+          <option value="Database Systems">Database Systems</option>
+          <option value="Operating Systems">Operating Systems</option>
+          <option value="Calculus">Calculus</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="due-date">Due Date</label>
+        <input type="date" id="due-date" required />
+
+        <button type="submit">Add Task</button>
+      </form>
+
+      <div>
+        <button id="fetch-btn" onclick="fetchApiTasks()">Fetch Tasks from API</button>
+        <p id="api-status"></p>
+      </div>
+    </section>
+  </aside>
+
+  <section>
+    <h2>All Tasks</h2>
+
+    <select id="filter-subject" onchange="renderTasks()">
+      <option value="">All Subjects</option>
+      <option value="Web Technologies">Web Technologies</option>
+      <option value="Data Structures">Data Structures</option>
+      <option value="Database Systems">Database Systems</option>
+      <option value="Operating Systems">Operating Systems</option>
+      <option value="Calculus">Calculus</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <select id="sort-order" onchange="renderTasks()">
+      <option value="asc">Due: Earliest First</option>
+      <option value="desc">Due: Latest First</option>
+    </select>
+
+    <ul id="task-list"></ul>
+
+    <div id="api-tasks-section">
+      <h3>API Fetched Tasks</h3>
+      <div id="api-task-list"></div>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
